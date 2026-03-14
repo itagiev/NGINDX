@@ -1,0 +1,14 @@
+1. Если закрывать окно "неправильно", не вызываются соответствующие сообщения типа DestroyWindow
+2. Разобраться с удалением конструктором и с move конструктором (также =) <- как это работает для наследных классов
+3. Разобраться с сообщениями
+    //bool s_in_sizemove{ false };
+    //bool s_in_suspend{ false };
+    //bool s_minimized{ false };
+
+4. При выходе из fullscreen позиция уходит в (0, 0) (даже если установить что-то другое)
+
+5. case WM_MOUSEACTIVATE:
+    // When you click activate the window, we want Mouse to ignore it.
+    return MA_ACTIVATEANDEAT;
+
+https://github.com/microsoft/DirectXTK/wiki/Mouse-and-keyboard-input

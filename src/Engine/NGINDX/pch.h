@@ -32,6 +32,7 @@
 #include <Windows.h>
 
 #include <wrl/client.h>
+#include <wrl/wrappers/corewrappers.h>
 
 //#ifdef USING_DIRECTX_HEADERS
 //#include <directx/dxgiformat.h>
@@ -45,10 +46,16 @@
 //#endif
 
 //#include <dxgi1_4.h>
-//
-//#include <DirectXMath.h>
+
+#include <DirectXMath.h>
 //#include <DirectXColors.h>
 
+// DirectX Tool Kit headers
+#include <GamePad.h>
+#include <Keyboard.h>
+#include <Mouse.h>
+
+// Standard headers
 #include <algorithm>
 #include <array>
 #include <cstddef>

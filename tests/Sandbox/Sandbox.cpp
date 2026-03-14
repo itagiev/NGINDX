@@ -1,10 +1,13 @@
 #include <NGINDX/NGINDX.h>
 
-class Sandbox : public NGINDX::GameCore
+class Sandbox final : public NGINDX::GameCore
 {
 public:
     Sandbox()
-        : GameCore{}
+    {
+    }
+
+    ~Sandbox()
     {
     }
 
@@ -16,8 +19,9 @@ public:
     {
     }
 
-    void Update(float deltaTime) override
+    void Update(const NGINDX::StepTimer& timer) override
     {
+        timer.GetElapsedSeconds();
     }
 
     void Render() override

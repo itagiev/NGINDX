@@ -16,7 +16,7 @@ namespace NGINDX
         virtual LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) = 0;
 
     public:
-        static LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+        static inline LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         {
             BaseWindow* pThis{ nullptr };
 
@@ -49,7 +49,7 @@ namespace NGINDX
 
         virtual ~BaseWindow() = default;
 
-        BOOL Create(HINSTANCE hInstance,
+        inline BOOL Create(HINSTANCE hInstance,
             LPCWSTR title,
             int x, int y, int width, int height,
             DWORD dwStyle = WS_OVERLAPPEDWINDOW,
@@ -89,7 +89,13 @@ namespace NGINDX
             return TRUE;
         }
 
-        void PeekMessages()
+        inline void ShowAndUpdate(int nCmdShow)
+        {
+            ShowWindow(m_hWnd, nCmdShow);
+            UpdateWindow(m_hWnd);
+        }
+
+        inline void PeekMessages()
         {
             MSG msg{};
             while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -97,23 +103,21 @@ namespace NGINDX
                 if (msg.message == WM_QUIT)
                 {
                     m_quit = true;
-                    m_exitCode = msg.wParam;
                 }
 
                 TranslateMessage(&msg);
                 DispatchMessage(&msg);
             }
+            m_exitCode = msg.wParam;
         }
 
-        void SetMessageHandler(std::function<LRESULT(UINT, WPARAM, LPARAM)> callback)
+        inline void SetMessageHandler(std::function<LRESULT(UINT, WPARAM, LPARAM)> callback)
         {
             m_messageHandler = callback;
         }
 
-        bool Quit() const { return m_quit; }
-
-        WPARAM ExitCode() const { return m_exitCode; }
-
-        HWND GetWindow() const { return m_hWnd; }
+        inline HWND GetWindow() const { return m_hWnd; }
+        inline bool Quit() const { return m_quit; }
+        inline WPARAM ExitCode() const { return m_exitCode; }
     };
 }

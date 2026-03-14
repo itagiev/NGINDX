@@ -53,4 +53,6 @@ target_compile_definitions(NGINDX
 )
 
 # Link libraries
-# target_link_libraries(NGINDX PUBLIC lib:lib)
+# target_link_libraries(${PROJECT_NAME} PRIVATE XInput)
+# target_link_libraries(${PROJECT_NAME} PRIVATE xinput1_4)
+target_link_libraries(NGINDX PUBLIC DirectXTK12)

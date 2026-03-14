@@ -1,7 +1,12 @@
 #pragma once
 
-#include "NGINDX/Core/GameCore.h"
 #include <memory>
+
+#include "NGINDX/Platform/Windows/MainWindow.h"
+#include "NGINDX/Core/CommandLineArgs.h"
+#include "NGINDX/Core/Log.h"
+#include "NGINDX/Core/StepTimer.h"
+#include "NGINDX/Core/GameCore.h"
 
 extern LPCWSTR Title();
 extern NGINDX::GameCore* CreateApplication();
