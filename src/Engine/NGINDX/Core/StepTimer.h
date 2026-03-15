@@ -107,7 +107,6 @@ namespace NGINDX
         }
 
         // Update timer state, calling the specified Update function the appropriate number of times.
-        /*template<typename TUpdate>*/
         void Tick(const auto& update)
         {
             // Query the current time.

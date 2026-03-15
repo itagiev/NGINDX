@@ -1,5 +1,5 @@
 #include "NGINDX/Core/GameCore.h"
-#include "NGINDX/Core/CommandLineArgs.h"
+#include "NGINDX/Backend/D3D12/D3D12Backend.h"
 
 namespace NGINDX
 {
@@ -10,9 +10,9 @@ namespace NGINDX
             return 1;
 
         // Без этого не работает gamepad
-        Microsoft::WRL::Wrappers::RoInitializeWrapper initialize(RO_INIT_MULTITHREADED);
+        /*Microsoft::WRL::Wrappers::RoInitializeWrapper initialize(RO_INIT_MULTITHREADED);
         if (FAILED(initialize))
-            return 1;
+            return 1;*/
 
         // В качестве обработчика событий устанавливается данный экземпляр приложения
         m_window.SetMessageHandler(this);
@@ -39,7 +39,7 @@ namespace NGINDX
         }
 
         // Завершение работы приложения, освобождение ресурсов и пр.
-        Terminate();
+        Shutdown();
 
         // Результат работы - последнее значение wParam из события окна
         return (int)m_window.ExitCode();
@@ -47,16 +47,18 @@ namespace NGINDX
 
     void GameCore::Initialize()
     {
+        NGINDX::D3D12::Initialize();
+
         // Input devices initialization
         m_mouse = std::make_unique<DirectX::Mouse>();
         m_mouse->SetWindow(m_window.GetWindow());
         m_keyboard = std::make_unique<DirectX::Keyboard>();
-        m_gamePad = std::make_unique<DirectX::GamePad>();
+        //m_gamePad = std::make_unique<DirectX::GamePad>();
 
         Startup();
     }
 
-    void GameCore::Terminate()
+    void GameCore::Shutdown()
     {
         Cleanup();
     }
@@ -69,7 +71,7 @@ namespace NGINDX
 
         m_keyboardButtons.Update(m_keyboard->GetState());
 
-        const auto pad = m_gamePad->GetState(0);
+        /*const auto pad = m_gamePad->GetState(0);
         if (pad.IsConnected())
         {
             m_gamePadButtons.Update(pad);
@@ -77,11 +79,11 @@ namespace NGINDX
         else
         {
             m_gamePadButtons.Reset();
-        }
+        }*/
 
         m_timer.Tick([this]() { Update(m_timer); });
 
-        Render();
+        Draw();
     }
 
     bool GameCore::IsDone()

@@ -31,8 +31,19 @@
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 
+// WRL headers
+
 #include <wrl/client.h>
-#include <wrl/wrappers/corewrappers.h>
+#include <wrl/event.h>
+//#include <wrl/wrappers/corewrappers.h>
+
+// DirectX headers
+#include <d3d12.h>
+#include <dxgi1_6.h>
+
+#ifdef _DEBUG
+#include <dxgidebug.h>
+#endif
 
 //#ifdef USING_DIRECTX_HEADERS
 //#include <directx/dxgiformat.h>
@@ -45,10 +56,8 @@
 //#include "d3dx12.h"
 //#endif
 
-//#include <dxgi1_4.h>
-
 #include <DirectXMath.h>
-//#include <DirectXColors.h>
+#include <DirectXColors.h>
 
 // DirectX Tool Kit headers
 #include <GamePad.h>
@@ -75,28 +84,6 @@
 #include <tuple>
 #include <unordered_map>
 #include <vector>
-
-//#ifdef _DEBUG
-//#include <dxgidebug.h>
-//#endif
-
-// If using the DirectX Tool Kit for DX12, uncomment this line:
-//#include "GraphicsMemory.h"
-
-//namespace DX
-//{
-//    inline void ThrowIfFailed(HRESULT hr)
-//    {
-//        if (FAILED(hr))
-//        {
-//            // Set a breakpoint on this line to catch DirectX API errors
-//            throw std::exception();
-//        }
-//    }
-//}
-
-//#include <wrl/event.h>
-
 
 // Project specific
 #include "NGINDX/Core/Log.h"

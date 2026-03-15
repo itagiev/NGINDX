@@ -6,8 +6,8 @@ namespace NGINDX
     class BaseWindow
     {
     private:
+        MSG m_msg{};
         bool m_quit{ false };
-        WPARAM m_exitCode{ 0 };
 
     protected:
         HWND m_hwnd{ NULL };
@@ -96,22 +96,20 @@ namespace NGINDX
 
         inline void PeekMessages()
         {
-            MSG msg{};
-            while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+            while (PeekMessage(&m_msg, NULL, 0, 0, PM_REMOVE))
             {
-                if (msg.message == WM_QUIT)
+                if (m_msg.message == WM_QUIT)
                 {
                     m_quit = true;
                 }
 
-                TranslateMessage(&msg);
-                DispatchMessage(&msg);
+                TranslateMessage(&m_msg);
+                DispatchMessage(&m_msg);
             }
-            m_exitCode = msg.wParam;
         }
 
         inline HWND GetWindow() const { return m_hwnd; }
         inline bool Quit() const { return m_quit; }
-        inline WPARAM ExitCode() const { return m_exitCode; }
+        inline WPARAM ExitCode() const { return m_msg.wParam; }
     };
 }

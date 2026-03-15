@@ -24,7 +24,7 @@ public:
         timer.GetElapsedSeconds();
     }
 
-    void Render() override
+    void Draw() override
     {
     }
 };

@@ -28,12 +28,12 @@ namespace NGINDX
 
         std::unique_ptr<DirectX::Mouse> m_mouse;
         std::unique_ptr<DirectX::Keyboard> m_keyboard;
-        std::unique_ptr<DirectX::GamePad> m_gamePad;
+        //std::unique_ptr<DirectX::GamePad> m_gamePad;
 
         DirectX::Mouse::State m_mouseState{};
         DirectX::Mouse::ButtonStateTracker m_mouseButtons;
         DirectX::Keyboard::KeyboardStateTracker m_keyboardButtons;
-        DirectX::GamePad::ButtonStateTracker m_gamePadButtons;
+        //DirectX::GamePad::ButtonStateTracker m_gamePadButtons;
 
 #pragma endregion
 
@@ -44,7 +44,7 @@ namespace NGINDX
         // Application initialization.
         void Initialize();
         // Application termination.
-        void Terminate();
+        void Shutdown();
         // Main loop.
         void Tick();
 
@@ -79,7 +79,7 @@ namespace NGINDX
         virtual void Update(const NGINDX::StepTimer& timer) = 0;
 
         // Official rendering pass
-        virtual void Render() = 0;
+        virtual void Draw() = 0;
 
         // Override this in applications that use DirectX Raytracing to require a DXR-capable device.
         virtual bool RequiresRaytracingSupport() const { return false; }
