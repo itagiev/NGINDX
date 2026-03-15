@@ -2,10 +2,11 @@
 
 #include "NGINDX/Platform/Windows/MainWindow.h"
 #include "NGINDX/Core/StepTimer.h"
+#include "NGINDX/Core/IMessageHandler.h"
 
 namespace NGINDX
 {
-    class GameCore
+    class GameCore : public IMessageHandler
     {
     public:
         static constexpr int g_Width = 960;
@@ -15,10 +16,10 @@ namespace NGINDX
         MainWindow m_window{};
         bool m_running{ true };
 
-        bool m_inSizeMove{ false };
-        bool m_inSuspend{ false };
-        bool m_minimized{ false };
-        bool m_fullscreen{ false };
+        // bool m_inSizeMove{ false };
+        // bool m_inSuspend{ false };
+        // bool m_minimized{ false };
+        // bool m_fullscreen{ false };
 
         // Main loop timer.
         NGINDX::StepTimer m_timer{};
@@ -47,19 +48,19 @@ namespace NGINDX
         // Main loop.
         void Tick();
 
-        // Window message handler.
-        LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam);
-#pragma endregion
-
 #pragma region Message handlers
 
-         void OnActivated();
-         void OnDeactivated();
-         void OnSuspending();
-         void OnResuming();
-         void OnWindowMoved();
-         void OnDisplayChange();
-         void OnWindowSizeChanged(int width, int height);
+        void OnMouse(UINT message, WPARAM wParam, LPARAM lParam);
+        void OnKeyboard(UINT message, WPARAM wParam, LPARAM lParam);
+        void OnActivated();
+        void OnDeactivated();
+        void OnSuspending();
+        void OnResuming();
+        void OnWindowMoved();
+        void OnDisplayChange();
+        void OnWindowSizeChanged(int width, int height);
+
+#pragma endregion
 
 #pragma endregion
 

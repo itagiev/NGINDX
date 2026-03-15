@@ -1,15 +1,20 @@
 #pragma once
 
 #include "NGINDX/Platform/Windows/BaseWindow.h"
+#include "NGINDX/Core/IMessageHandler.h"
 
 namespace NGINDX
 {
     class MainWindow final : public BaseWindow<MainWindow>
     {
+    private:
+        IMessageHandler* m_messageHandler{ nullptr };
+
     public:
         MainWindow();
         ~MainWindow() override;
 
-        LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) override;
+        void SetMessageHandler(IMessageHandler* messageHandler);
+        LRESULT HandleMessage(UINT message, WPARAM wParam, LPARAM lParam) override;
     };
 }

@@ -96,3 +96,7 @@
 //}
 
 //#include <wrl/event.h>
+
+
+// Project specific
+#include "NGINDX/Core/Log.h"
