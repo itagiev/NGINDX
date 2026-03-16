@@ -15,6 +15,4 @@ https://github.com/microsoft/DirectXTK/wiki/Mouse-and-keyboard-input
 
 6. При выходе на кнопку ESC завершение происходит не с кодом 0
 
-7. Проблема с reverse application (Sandbox требует все теже самые зависимости)
-
-8. Чем отличается //#include <directx/d3d12.h> от #include <d3d12.h> и прочии
+9. IMessageHandler (методы public), GameCore наследует и переопределяет методы в private, но если я передаю GameCore в виде интерфейса IMessageHandler, то я могу вызывать методы

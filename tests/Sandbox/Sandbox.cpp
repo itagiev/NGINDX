@@ -2,15 +2,7 @@
 
 class Sandbox final : public NGINDX::GameCore
 {
-public:
-    Sandbox()
-    {
-    }
-
-    ~Sandbox()
-    {
-    }
-
+private:
     void Startup() override
     {
     }
@@ -25,6 +17,15 @@ public:
     }
 
     void Draw() override
+    {
+    }
+
+public:
+    Sandbox()
+    {
+    }
+
+    ~Sandbox()
     {
     }
 };

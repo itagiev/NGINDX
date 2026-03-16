@@ -11,7 +11,7 @@
 // Author:  Jack Elliott
 //
 
-#include "NGINDX/Core/CommandLineArgs.h"
+#include "CommandLineArgs.h"
 
 namespace CommandLineArgs
 {

@@ -1,5 +1,5 @@
-#include "NGINDX/Core/GameCore.h"
-#include "NGINDX/Backend/D3D12/D3D12Backend.h"
+#include "GameCore.h"
+#include "NGINDX/Graphics/D3D12Backend.h"
 
 namespace NGINDX
 {

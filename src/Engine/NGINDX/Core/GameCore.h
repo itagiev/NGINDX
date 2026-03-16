@@ -1,6 +1,6 @@
 #pragma once
 
-#include "NGINDX/Platform/Windows/MainWindow.h"
+#include "NGINDX/Window/MainWindow.h"
 #include "NGINDX/Core/StepTimer.h"
 #include "NGINDX/Core/IMessageHandler.h"
 

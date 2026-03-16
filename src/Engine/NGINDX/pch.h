@@ -37,7 +37,7 @@
 #include <wrl/event.h>
 //#include <wrl/wrappers/corewrappers.h>
 
-// DirectX headers
+// D3D12 headers
 #include <d3d12.h>
 #include <dxgi1_6.h>
 
@@ -45,21 +45,10 @@
 #include <dxgidebug.h>
 #endif
 
-//#ifdef USING_DIRECTX_HEADERS
-//#include <directx/dxgiformat.h>
-//#include <directx/d3d12.h>
-//#include <directx/d3dx12.h>
-//#include <dxguids/dxguids.h>
-//#else
-//#include <d3d12.h>
-//
-//#include "d3dx12.h"
-//#endif
-
 #include <DirectXMath.h>
 #include <DirectXColors.h>
 
-// DirectX Tool Kit headers
+// DirectXTK12 headers
 #include <GamePad.h>
 #include <Keyboard.h>
 #include <Mouse.h>
@@ -84,6 +73,3 @@
 #include <tuple>
 #include <unordered_map>
 #include <vector>
-
-// Project specific
-#include "NGINDX/Core/Log.h"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "NGINDX/Platform/Windows/BaseWindow.h"
+#include "NGINDX/Window/BaseWindow.h"
 #include "NGINDX/Core/IMessageHandler.h"
 
 namespace NGINDX

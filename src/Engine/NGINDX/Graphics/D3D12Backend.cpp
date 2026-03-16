@@ -1,4 +1,4 @@
-#include "NGINDX/Backend/D3D12/D3D12Backend.h"
+#include "D3D12Backend.h"
 
 namespace NGINDX::D3D12
 {
@@ -7,8 +7,8 @@ namespace NGINDX::D3D12
     using namespace DirectX;
 
     // Members
-    Microsoft::WRL::ComPtr<IDXGIFactory4> dxgiFactory;
-    Microsoft::WRL::ComPtr<ID3D12Device> d3dDevice;
+    ComPtr<IDXGIFactory4> dxgiFactory;
+    ComPtr<ID3D12Device> d3dDevice;
 
     void Initialize()
     {

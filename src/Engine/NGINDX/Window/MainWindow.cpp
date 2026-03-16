@@ -1,4 +1,4 @@
-#include "NGINDX/Platform/Windows/MainWindow.h"
+#include "MainWindow.h"
 
 namespace NGINDX
 {

@@ -30,7 +30,7 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}
         ${SANDBOX_SOURCES}
 )
 
-target_precompile_headers(Sandbox PRIVATE pch.h)
+target_precompile_headers(Sandbox REUSE_FROM NGINDX)
 
 # Link Sandbox with NGINDX
 # PRIVATE means that Sandbox dependencies are not transitively visible to other targets
