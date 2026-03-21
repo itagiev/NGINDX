@@ -52,7 +52,10 @@ target_compile_definitions(NGINDX
         _UNICODE
 )
 
+# Link headers
+target_include_directories(NGINDX PUBLIC
+    "${PROJECT_SOURCE_DIR}/vendor/DirectX-Headers/include"
+)
+
 # Link libraries
-# target_link_libraries(${PROJECT_NAME} PRIVATE XInput)
-# target_link_libraries(${PROJECT_NAME} PRIVATE xinput1_4)
 target_link_libraries(NGINDX PUBLIC DirectXTK12)

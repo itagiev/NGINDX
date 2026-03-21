@@ -32,15 +32,17 @@
 #include <Windows.h>
 #include <comdef.h>
 
-// WRL headers
 
+// WRL headers
 #include <wrl/client.h>
 #include <wrl/event.h>
 //#include <wrl/wrappers/corewrappers.h>
 
+
 // D3D12 headers
-#include <d3d12.h>
+#include "directx/d3d12.h"
 #include <dxgi1_6.h>
+#include "directx/d3dx12.h"
 
 #ifdef _DEBUG
 #include <dxgidebug.h>
@@ -49,10 +51,12 @@
 #include <DirectXMath.h>
 #include <DirectXColors.h>
 
+
 // DirectXTK12 headers
 #include <GamePad.h>
 #include <Keyboard.h>
 #include <Mouse.h>
+
 
 // Standard headers
 #include <algorithm>

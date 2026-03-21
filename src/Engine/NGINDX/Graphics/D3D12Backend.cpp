@@ -25,8 +25,11 @@ namespace NGINDX::D3D12
     ComPtr<ID3D12DescriptorHeap> m_rtvHeap;     // RTV descriptors describe render target resources
     ComPtr<ID3D12DescriptorHeap> m_dsvHeap;     // DSV descriptors describe depth/stencil resources
 
+    int m_currBackBuffer{ 0 };
+
     //bool m_4xMsaaState = true;      // 4X MSAA enabled
     //UINT m_4xMsaaQuality = 0;       // quality level of 4X MSAA
+
 
     // SHOULD BE SET FROM APPLICATION
     D3D_DRIVER_TYPE m_d3dDriverType;
@@ -188,8 +191,10 @@ namespace NGINDX::D3D12
 
     D3D12_CPU_DESCRIPTOR_HANDLE CurrentBackBufferView()
     {
-        // TODO: add d3dx12;
-        return m_dsvHeap->GetCPUDescriptorHandleForHeapStart();
+        return CD3DX12_CPU_DESCRIPTOR_HANDLE(
+            m_rtvHeap->GetCPUDescriptorHandleForHeapStart(),
+            m_currBackBuffer,
+            m_rtvDescriptorSize);
     }
 
     static void LogAdapters()

@@ -1,3 +1,6 @@
 [submodule "vendor/DirectXTK12"]
 	path = vendor/DirectXTK12
 	url = https://github.com/microsoft/DirectXTK12.git
+[submodule "vendor/DirectX-Headers"]
+	path = vendor/DirectX-Headers
+	url = https://github.com/microsoft/DirectX-Headers.git
