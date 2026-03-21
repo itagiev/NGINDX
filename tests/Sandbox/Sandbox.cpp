@@ -18,6 +18,7 @@ private:
 
     void Draw() override
     {
+        NGINDX::D3D12::Draw();
     }
 
 public:

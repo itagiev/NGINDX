@@ -8,8 +8,6 @@
 
 namespace NGINDX::D3D12
 {
-    constexpr int g_swapChainBufferCount{ 2 };
-
     struct AppDesc
     {
         D3D_DRIVER_TYPE D3DDriverType{ D3D_DRIVER_TYPE_HARDWARE };
@@ -33,4 +31,7 @@ namespace NGINDX::D3D12
 
     void Initialize(const AppDesc& desc);
     void Shutdown();
+
+    void OnResize();
+    void Draw();
 }
