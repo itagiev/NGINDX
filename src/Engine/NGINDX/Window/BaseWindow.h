@@ -66,9 +66,13 @@ namespace NGINDX
             wcex.lpszClassName = title;
             wcex.hIconSm = LoadIcon(hInstance, IDI_APPLICATION);
 
-            RegisterClassEx(&wcex);
+            if (!RegisterClassEx(&wcex))
+            {
+                MessageBox(0, L"Failed to register class.", 0, 0);
+                return FALSE;
+            }
 
-            RECT rc{ static_cast<LONG>(0), static_cast<LONG>(0), static_cast<LONG>(width), static_cast<LONG>(height) };
+            RECT rc{ 0, 0, static_cast<LONG>(width), static_cast<LONG>(height) };
             AdjustWindowRect(&rc, dwStyle, FALSE);
 
             m_hwnd = CreateWindowEx(dwExStyle,
@@ -82,6 +86,7 @@ namespace NGINDX
 
             if (!m_hwnd)
             {
+                MessageBox(0, L"Failed to create window.", 0, 0);
                 return FALSE;
             }
 

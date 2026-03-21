@@ -1,12 +1,26 @@
 #pragma once
 
+#include "D3D12Utils.h"
+
 // Link necessary d3d12 libraries.
-//#pragma comment(lib,"d3dcompiler.lib")
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
 
 namespace NGINDX::D3D12
 {
+    constexpr int g_swapChainBufferCount{ 2 };
+
+    struct AppDesc
+    {
+        D3D_DRIVER_TYPE D3DDriverType{ D3D_DRIVER_TYPE_HARDWARE };
+        DXGI_FORMAT BackBufferFormat{ DXGI_FORMAT_R8G8B8A8_UNORM };
+        DXGI_FORMAT DepthStencilFormat{ DXGI_FORMAT_D24_UNORM_S8_UINT };
+        int ClientWidth{ 960 };
+        int ClientHeight{ 720 };
+        DXGI_RATIONAL RefreshRate{ 60, 1 };
+        HWND Window{ nullptr };
+    };
+
     // 1. Create the ID3D12Device using the D3D12CreateDevice function.
     // 2. Create an ID3D12Fence object and query descriptor sizes.
     // 3. Check 4X MSAA quality level support.
@@ -17,18 +31,6 @@ namespace NGINDX::D3D12
     // 8. Create the depth / stencil buffer and its associated depth / stencil view.
     // 9. Set the viewport and scissor rectangles.
 
-    // Helpers
-    inline void ThrowIfFailed(HRESULT hr)
-    {
-        if (FAILED(hr))
-        {
-            // Set a breakpoint on this line to catch DirectX API errors
-            throw std::exception();
-        }
-    }
-
-    // Methods
-    void Initialize();
-
+    void Initialize(const AppDesc& desc);
     void Shutdown();
 }

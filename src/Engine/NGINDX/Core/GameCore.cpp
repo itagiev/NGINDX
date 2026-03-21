@@ -47,7 +47,9 @@ namespace NGINDX
 
     void GameCore::Initialize()
     {
-        NGINDX::D3D12::Initialize();
+        NGINDX::D3D12::AppDesc appDesc{};
+        appDesc.Window = m_window.GetWindow();
+        NGINDX::D3D12::Initialize(appDesc);
 
         // Input devices initialization
         m_mouse = std::make_unique<DirectX::Mouse>();
@@ -61,6 +63,8 @@ namespace NGINDX
     void GameCore::Shutdown()
     {
         Cleanup();
+
+        NGINDX::D3D12::Shutdown();
     }
 
     void GameCore::Tick()
